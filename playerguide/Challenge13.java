@@ -1,4 +1,4 @@
-package playerguidechallenges;
+package playerguide;
 import helperclasses.ConsoleHelper;
 
 public class Challenge13 {

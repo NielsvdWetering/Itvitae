@@ -10,7 +10,7 @@ public class Challenge5 {
 		String b = input.nextLine();	//variable b stores how you would discribe that thing
 		String c = "of Doom";		//variable c stores the string "of Doom"
 		String d = "3000";			//variable d stores the string "3000"
-		System.out.println("The " + b + " " + a + " of " + c + " " + d + "!");
+		System.out.println("The " + b + " " + a + " " + c + " " + d + "!");
 		
 		/*you could make this code a lot easyer to read by using more describtive variable names
 		this is the second row
