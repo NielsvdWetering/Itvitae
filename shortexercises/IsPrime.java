@@ -22,7 +22,6 @@ public class IsPrime {
             for (int i = 3; i < number; i += 2) {
                 primeOrNot = (number % i != 0);
                 if (primeOrNot == false) {
-                    System.out.println(i);
                     break;
                 }
             }
