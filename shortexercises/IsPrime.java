@@ -10,7 +10,7 @@ public class IsPrime {
 	}
     
     private static boolean isPrime(int number) {
-        boolean primeOrNot = true; //waarom compileerd java niet als ik de boolean hier nog geen waarde geef? (dus alleen declareer)
+        boolean primeOrNot;
 
         if (number == 2 || number == 3) {
             return true;
