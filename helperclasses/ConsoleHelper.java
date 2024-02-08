@@ -16,12 +16,16 @@ public class ConsoleHelper {
         Scanner scan = new Scanner(System.in);
         
         int integerNumber = 0;
-        boolean inRange = false;
+        boolean inRange = true;
+        System.out.println(question);
         while (inRange) {
-            System.out.print("question");
             String temp = scan.nextLine();
             integerNumber = Integer.parseInt(temp);
-            if (integerNumber > min && integerNumber < max) inRange = true;
+            if (integerNumber >= min && integerNumber <= max) {
+                inRange = false;
+            } else {
+                System.out.printf("That was not a integer number between %d and %d, please try again: \n", min, max);
+            }
         }
         return integerNumber;
     }
