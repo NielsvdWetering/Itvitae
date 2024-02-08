@@ -17,7 +17,7 @@ public class ConsoleHelper {
         
         int integerNumber = 0;
         boolean inRange = true;
-        System.out.println(question);
+        System.out.print(question);
         while (inRange) {
             String temp = scan.nextLine();
             integerNumber = Integer.parseInt(temp);

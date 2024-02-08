@@ -54,26 +54,24 @@ class HuntingTheManticore {
         }
     }
     
-    //getters and setters van round
-    public void setRound(int newRound) {
+    //getters and setters
+    void setRound(int newRound) {
         round = newRound;
     }
     
-    public int getRound() {
+    int getRound() {
         return round;
     }
     
-    //getter city health
-    public int getCityHealth() {
+    int getCityHealth() {
         return cityHealth;
     }
     
-    public void setCityHealth(int newCityHealth) {
+    void setCityHealth(int newCityHealth) {
         cityHealth = newCityHealth;
     }
     
-    //getter manticore health
-    public int getManticoreHealth() {
+    int getManticoreHealth() {
         return manticoreHealth;
     }
     
