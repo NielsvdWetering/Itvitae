@@ -1,7 +1,7 @@
 package shortexercises;
 
 public class Snail {
-    final static int N = 3;
+    final static int N = 5;
     static int[][] snail = new int[N][N];
     static int y = 0;   //rows of the matrix
     static int x = 0;   //columns of the matrix
@@ -16,7 +16,7 @@ public class Snail {
             for (int yy = 0; yy < snail[xx].length; yy++) {
                 snail[xx][yy] = number;
                 number++;
-                System.out.print(snail[xx][yy] + " ");
+                System.out.printf("%-4d", snail[xx][yy]);
             }
             System.out.println();
         }
