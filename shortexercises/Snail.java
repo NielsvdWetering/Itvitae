@@ -8,7 +8,7 @@ public class Snail {
     
     public static void main(String[] args) {
         
-        System.out.println("The matrix is:");
+        System.out.println("\nThe matrix is:\n");
         
         //initializes the elements of the matrix and prints it out on the console
         int number = 1;
@@ -21,6 +21,7 @@ public class Snail {
             System.out.println();
         }
         
+        System.out.print("\nThe Snail of the array is => ");
         for (int i = 1; i < N; i++) {
             int xyMax = N - i;
             int xyMin = i;
