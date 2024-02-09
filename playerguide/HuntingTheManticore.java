@@ -34,7 +34,7 @@ class HuntingTheManticore {
     void printStatus() {
         System.out.println("-----------------------------------------------------------------");
         System.out.printf("STATUS: Round: %d  City: %d/%d  Manticore: %d/%d\n", round, cityHealth, CITY_MAX_HEALTH, manticoreHealth, MANTICORE_MAX_HEALTH);
-        System.out.println("The cannonn is expected to do " + magicCannon() + " damage this round");
+        System.out.println("The cannon is expected to do " + magicCannon() + " damage this round");
     }
     
     //methode that asks for range and prints if it hit
