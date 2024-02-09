@@ -24,18 +24,22 @@ public class Snail {
         for (int i = 1; i < N; i++) {
             int xyMax = N - i;
             int xyMin = i;
+            //moving to the right
             for (int right = x; right < xyMax; right++) {
                 printSnail();
                 x++;
             }
+            //moving down
             for (int down = y; down < xyMax; down++) {
                 printSnail();
                 y++;
             }
+            //moving left
             for (int left = x; left > (xyMin - 1); left--) {
                 printSnail();
                 x--;
             }
+            //movign up
             for (int up = y; up > xyMin; up--) {
                 printSnail();
                 y--;
