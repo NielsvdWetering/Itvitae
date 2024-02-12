@@ -1,5 +1,7 @@
 package shortexercises;
 
+import java.util.Scanner;
+
 public class Hangman {
 	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -17,8 +19,8 @@ public class Hangman {
             printStatus(guessedWord, wrongGuesses);
             
             System.out.print("Enter your guess: ");
-            char guess = sc.next.charAt(0);
-            if (checkCharacters(word, guess) {
+            char guess = sc.next(charAt(0));
+            if (checkCharacters(word, guess)) {
                 guessedWord = placeCharacters(word, guessedWord, guess);
             } else {
                 wrongGuesses++;
@@ -27,7 +29,7 @@ public class Hangman {
         }
 	}
     
-    private char[] guessedWordCreation (word) {
+    private static char[] guessedWordCreation(String word) {
         char[] guessedWord = new char[(word.length() * 2)];
         for (int i = 0; i < (word.length() * 2); i++) {
             guessedWord[i] = '_';
@@ -37,41 +39,111 @@ public class Hangman {
         return guessedWord;
     }
     
-    private boolean checkCharacters(String word, char guess) {
+    private static boolean checkCharacters(String word, char guess) {
         for (int i = 0; i < word.length(); i++) {
             if (guess == word.charAt(i)) return true;
         }
         return false;
     }
     
-    private char[] placeCharacters(String word, char[]guessedWord, char guess) {
+    private static char[] placeCharacters(String word, char[]guessedWord, char guess) {
         for (int i = 0; i < word.length(); i++) {
             guessedWord[i * 2] = (guess == word.charAt(i)) ? guess : '_' ;
         }
         return guessedWord;
     }
     
-    private void printStatus(char[] guessedWord, int wrongGuesses) {
+    private static void printStatus(char[] guessedWord, int wrongGuesses) {
         System.out.println("Wrong guesses: " + wrongGuesses + "/10");
         printHangman(wrongGuesses);
         System.out.println("         " + guessedWord);
     }
     
-    private void printHangman(int wrongGuesses) {
+    private static void printHangman(int wrongGuesses) {
         System.out.println();
         
         switch (wrongGuesses) {
-            case 0 -> break;
             case 1 -> System.out.print("______");
-            case 2 -> System.out.print("|\n|\n|\n|\n|\n|______");
-            case 3 -> System.out.print("|\n|\n|\n|\n|\\n|_\____");
-            case 4 -> System.out.print("______\n|\n|\n|\n|\n|\\n|_\____");
-            case 5 -> System.out.print("______\n| /\n|/\n|\n|\n|\\n|_\____");
-            case 6 -> System.out.print("______\n| /   |\n|/\n|\n|\n|\\n|_\____");
-            case 7 -> System.out.print("______\n| /   |\n|/    O\n|\n|\n|\\n|_\____");
-            case 8 -> System.out.print("______\n| /   |\n|/    O\n|     |\n|\n|\\n|_\____");
-            case 9 -> System.out.print("______\n| /   |\n|/    O\n|    /|\\n|\n|\\n|_\____");
-            case 10 -> System.out.print("______\n| /   |\n|/    O\n|    /|\\n|     /\\n|\\n|_\____");
+            case 2 -> System.out.print("""
+            |
+            |
+            |
+            |
+            |
+            |______
+            """);
+            case 3 -> System.out.print("""
+            |
+            |
+            |
+            |
+            |\\
+            |_\\____
+            """);
+            case 4 -> System.out.print("""
+            ______
+            |
+            |
+            |
+            |
+            |\\
+            |_\\____
+            """);
+            case 5 -> System.out.print("""
+            ______
+            | /
+            |/
+            |
+            |
+            |\\
+            |_\\____
+            """);
+            case 6 -> System.out.print("""
+            ______
+            | /   |
+            |/
+            |
+            |
+            |\\
+            |_\\____
+            """);
+            case 7 -> System.out.print("""
+            ______
+            | /   |
+            |/    O
+            |
+            |
+            |\\
+            |_\\____
+            """);
+            case 8 -> System.out.print("""
+            ______
+            | /   |
+            |/    O
+            |     |
+            |
+            |\\
+            |_\\____
+            """);
+            case 9 -> System.out.print("""
+            ______
+            | /   |
+            |/    O
+            |    /|\\
+            |
+            |\\
+            |_\\____
+            """);
+            case 10 -> System.out.print("""
+            ______
+            | /   |
+            |/    O
+            |    /|\\
+            |     /\\
+            |\\
+            |_\\____
+            """);
+            default -> System.out.println();
         }
     }
 }
