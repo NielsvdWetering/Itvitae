@@ -14,24 +14,34 @@ public class Hangman {
         char[] guessedWord = guessedWordCreation(word);
         
         int wrongGuesses = 0;
+        String wrongLetters = "";
         while (wrongGuesses < 10) {
             
-            printStatus(guessedWord, wrongGuesses);
+            printStatus(guessedWord, wrongGuesses, wrongLetters);
             
-            System.out.print("Enter your guess: ");
-            char guess = sc.next(charAt(0));
+            System.out.print("\nEnter your guess: ");
+            char guess = sc.next().charAt(0);
             if (checkCharacters(word, guess)) {
                 guessedWord = placeCharacters(word, guessedWord, guess);
             } else {
                 wrongGuesses++;
+                wrongLetters += " " + guess;
             }
             
+            if (wordHasBeenGuessed(word, guessedWord)) {
+                System.out.println("You have guessed the word! You won!");
+                break;
+            }
+            if (wrongGuesses == 10) {
+                printHangman(wrongGuesses);
+                System.out.println("You did not guess the word, you lost!");
+            }
         }
 	}
     
     private static char[] guessedWordCreation(String word) {
         char[] guessedWord = new char[(word.length() * 2)];
-        for (int i = 0; i < (word.length() * 2); i++) {
+        for (int i = 0; i < (word.length() * 2) - 1; i += 2) {
             guessedWord[i] = '_';
             guessedWord[i + 1] = ' ';
             
@@ -48,15 +58,24 @@ public class Hangman {
     
     private static char[] placeCharacters(String word, char[]guessedWord, char guess) {
         for (int i = 0; i < word.length(); i++) {
-            guessedWord[i * 2] = (guess == word.charAt(i)) ? guess : '_' ;
+            if (guess == word.charAt(i)) guessedWord[i * 2] = guess;
         }
         return guessedWord;
     }
     
-    private static void printStatus(char[] guessedWord, int wrongGuesses) {
+    private static void printStatus(char[] guessedWord, int wrongGuesses, String wrongLetters) {
+        System.out.println("-----------------------------------------------------------------------------------");
         System.out.println("Wrong guesses: " + wrongGuesses + "/10");
         printHangman(wrongGuesses);
-        System.out.println("         " + guessedWord);
+        for (char i : guessedWord) System.out.print(i);
+        System.out.println("\nWrong letters: " + wrongLetters);
+    }
+    
+    private static boolean wordHasBeenGuessed(String word, char[]guessedWord) {
+        for (int i = 0; i < word.length(); i++) {
+            if (guessedWord[i * 2] != word.charAt(i)) return false;
+        }
+        return true;
     }
     
     private static void printHangman(int wrongGuesses) {
@@ -145,6 +164,7 @@ public class Hangman {
             """);
             default -> System.out.println();
         }
+        System.out.println();
     }
 }
 
