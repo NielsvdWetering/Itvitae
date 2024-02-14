@@ -6,6 +6,7 @@ public class Challenge23 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ChestState chestState = ChestState.LOCKED;
+        
         while (true) {
             System.out.println("The chest is " +  chestState + ". What do you want to do? ");
             String userAction = sc.nextLine();
