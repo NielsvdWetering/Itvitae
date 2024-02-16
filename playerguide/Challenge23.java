@@ -46,7 +46,6 @@ public class Challenge23 {
 }
 
 
-
 enum ChestState {
     OPEN,
     CLOSED,
