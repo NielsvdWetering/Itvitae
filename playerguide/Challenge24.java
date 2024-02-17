@@ -50,10 +50,6 @@ public class Challenge24 {
         bowlOfSoup.serveSoup();
         
     }
-    
-    private static void menuOptions(String choice, Enum randomEnum) {
-        System.out.println("we have the following " + choice + " options:");
-    }
 }
 
 class Soup {
