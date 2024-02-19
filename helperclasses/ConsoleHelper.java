@@ -4,29 +4,38 @@ import java.util.Scanner;
 public class ConsoleHelper {
 
     public static int askForInteger(String question) {
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        int integerNumber = 0;
+        boolean notInteger = true;
+        
         System.out.println(question);
-        String temp = scan.nextLine();
-        int input = Integer.parseInt(temp);
-        return input;
+        
+        do {
+            if (sc.hasNextInt()) {
+                integerNumber = sc.nextInt();
+                notInteger = false;
+            } else {
+                sc.nextLine();
+            }
+        } while (notInteger);
+        
+        return integerNumber;
     }
     
     //asks for an integer nummber with the sting as question between an minimum and maximum value
     public static int askForInteger(String question, int min, int max) {
-        Scanner scan = new Scanner(System.in);
-        
         int integerNumber = 0;
-        boolean inRange = true;
-        System.out.print(question);
-        while (inRange) {
-            String temp = scan.nextLine();
-            integerNumber = Integer.parseInt(temp);
+        boolean inRange = false;
+        
+        do {
+            integerNumber = askForInteger(question);
             if (integerNumber >= min && integerNumber <= max) {
-                inRange = false;
+                inRange = true;
             } else {
                 System.out.printf("That was not a integer number between %d and %d, please try again: \n", min, max);
             }
-        }
+        } while (!inRange);
+        
         return integerNumber;
     }
 }

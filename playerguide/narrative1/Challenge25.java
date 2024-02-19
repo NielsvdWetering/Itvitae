@@ -43,12 +43,13 @@ public class Challenge25 {
     private static ArrowHead chooseArrowHead() {
         ConsoleHelper ch = new ConsoleHelper();
         
+        System.out.println("\nWe have the following arrow head options:");
         ArrowHead[] options = ArrowHead.values();
         for (ArrowHead option : options) {
             System.out.println((option.ordinal() + 1) + "). " + option.niceName());
         }
         
-        int choice = ch.askForInteger("Enter your choice: ");
+        int choice = ch.askForInteger("Enter your choice: ", 1, options.length);
         return options[choice - 1];
     }
     
@@ -61,12 +62,13 @@ public class Challenge25 {
     private static FletchingType chooseArrowFletcher() {
         ConsoleHelper ch = new ConsoleHelper();
         
+        System.out.println("We have the following fletching types available:");
         FletchingType[] options = FletchingType.values();
         for (FletchingType option : options) {
             System.out.println((option.ordinal() + 1) + "). " + option.niceName());
         }
         
-        int choice = ch.askForInteger("\nEnter your choice: ");
+        int choice = ch.askForInteger("\nEnter your choice: ", 1, options.length);
         return options[choice - 1];
     }
 }
