@@ -6,15 +6,16 @@ public class Challenge25 {
     
     public static void main(String[] args) {
         int choice = menu();
-        Arrow arrow = null;
-        if (choice == 4) {
-            arrow = createCustomArrow();
-        } else {
-            arrow = new Arrow(choice);
-        }
-
+        Arrow arrow = switch (choice) {
+            case 1 -> Arrow.createBeginnerArrow();
+            case 2 -> Arrow.createEliteArrow();
+            case 3 -> Arrow.createMarksmanArrow();
+            case 4 -> createCustomArrow();
+            default -> throw new IllegalArgumentException();
+        };
+        
         System.out.println("Here is the arrow:");
-        System.out.println("*Arrow with a head made of " + arrow.getHead() + ", " + arrow.getFletching() + " tail and with a length of " + arrow.getLength() + " cm*");
+        System.out.println("*Arrow with a head made of " + arrow.getHeadMaterial() + ", " + arrow.getFletchingMaterial() + " tail and with a length of " + arrow.getLength() + " cm*");
         System.out.println("The cost of this arrow is: " + arrow.getPrice() + " Gold");
     }
     
@@ -33,22 +34,22 @@ public class Challenge25 {
     }
     
     private static Arrow createCustomArrow() {
-        int head = chooseArrowHead();
+        ArrowHead head = chooseArrowHead();
         int length = chooseArrowLength();
-        int fletcher = chooseArrowFletcher();
-        return new Arrow(head, length, fletcher);
+        FletchingType fletching = chooseArrowFletcher();
+        return new Arrow(head, length, fletching);
     }
     
-    private static int chooseArrowHead() {
+    private static ArrowHead chooseArrowHead() {
         ConsoleHelper ch = new ConsoleHelper();
         
-        System.out.println("""
-        We have the following options as arrow head:
-        1). Steel.
-        2). Wood.
-        3). Obsidian.
-        """);
-        return ch.askForInteger("\nPlease enter your choice: ", 1, 3);
+        ArrowHead[] options = ArrowHead.values();
+        for (ArrowHead option : options) {
+            System.out.println((option.ordinal() + 1) + "). " + option.niceName());
+        }
+        
+        int choice = ch.askForInteger("Enter your choice: ");
+        return options[choice - 1];
     }
     
     private static int chooseArrowLength() {
@@ -57,16 +58,15 @@ public class Challenge25 {
         return ch.askForInteger("How long do you want the shaft to be (between 60 and 100 cm): ", 60, 100);
     }
     
-    private static int chooseArrowFletcher() {
+    private static FletchingType chooseArrowFletcher() {
         ConsoleHelper ch = new ConsoleHelper();
         
-        System.out.println();
-        System.out.println("""
-        We have the following options as arrow fletcher:
-        1). Plastic.
-        2). Turkey feathers.
-        3). Goose feathers.
-        """);
-        return ch.askForInteger("\nPlease enter your choice: ", 1, 3);
+        FletchingType[] options = FletchingType.values();
+        for (FletchingType option : options) {
+            System.out.println((option.ordinal() + 1) + "). " + option.niceName());
+        }
+        
+        int choice = ch.askForInteger("\nEnter your choice: ");
+        return options[choice - 1];
     }
 }
