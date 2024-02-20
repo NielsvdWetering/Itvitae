@@ -6,9 +6,9 @@ public class Challenge28{
         Point pointTwoThree = new Point(2, 3);
         Point pointMinusFourZero = new Point(-4, 0);
         
-        System.out.println(pointOrigin.toString());
-        System.out.println(pointTwoThree.toString());
-        System.out.println(pointMinusFourZero.toString());
+        System.out.println(pointOrigin);
+        System.out.println(pointTwoThree);
+        System.out.println(pointMinusFourZero);
     }
     
 }
