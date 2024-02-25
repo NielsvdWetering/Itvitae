@@ -38,4 +38,17 @@ public class ConsoleHelper {
         
         return integerNumber;
     }
+    
+    public static boolean isStringInteger(String input) {
+        char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        
+        nextNumber:
+        for (int i = 0; i < input.length(); i++) {
+            for (char number : numbers) {
+                if (input.charAt(i) == number) continue nextNumber;
+            }
+            return false;
+        }
+        return true;
+    }
 }
