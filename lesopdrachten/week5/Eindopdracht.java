@@ -14,7 +14,8 @@ public class Eindopdracht{
     private static String userInput() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your text:");
-        return sc.nextLine();
+        String text = sc.nextLine();
+        return text.toLowerCase();
     }
     
     private static int[] countEachCharacter(int[] alphabethNumbersAndSpace, String text) {
@@ -85,7 +86,7 @@ public class Eindopdracht{
         int maxValue = 0;
         for (int count : alphabethNumbersAndSpace) {
             if (count > maxValue) {
-                maxValue += count;
+                maxValue = count;
             }
         }
         return maxValue;
