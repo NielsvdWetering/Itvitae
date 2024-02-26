@@ -19,26 +19,26 @@ public class Eindopdracht{
     
     private static int[] countEachCharacter(int[] alphabethNumbersAndSpace, String text) {
         nextcharacter:
-        for (int i = 0; i < text.length(); i++) {
+        for (int charOfInputStr = 0; charOfInputStr < text.length(); charOfInputStr++) {
             //check 1 character en vergelijk die met alle opties in de volgende loop
             char letter = 'a';
             char number = '0';
-            for (int j = 0; j < 37; j++) {  //ittereerd door alle opties
-                if (j < 26) {
-                    if (text.charAt(i) == letter) {
-                        alphabethNumbersAndSpace[j]++;
+            for (int characterArrayIndex = 0; characterArrayIndex < 37; characterArrayIndex++) {  //ittereerd door alle opties
+                if (characterArrayIndex < 26) {
+                    if (text.charAt(charOfInputStr) == letter) {
+                        alphabethNumbersAndSpace[characterArrayIndex]++;
                         continue nextcharacter;
                     } else {
                         letter++;
                     }
-                } else if (j >= 26 && j < 36) {
-                    if (text.charAt(i) == number) {
-                        alphabethNumbersAndSpace[j]++;
+                } else if (characterArrayIndex >= 26 && characterArrayIndex < 36) {
+                    if (text.charAt(charOfInputStr) == number) {
+                        alphabethNumbersAndSpace[characterArrayIndex]++;
                         continue nextcharacter;
                     } else {
                         number++;
                     }
-                } else if (text.charAt(i) == 32) {
+                } else if (text.charAt(charOfInputStr) == 32) {
                     alphabethNumbersAndSpace[36]++;
                 }
             }
