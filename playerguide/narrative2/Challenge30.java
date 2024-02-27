@@ -3,10 +3,9 @@ package playerguide.narrative2;
 import java.util.ArrayList;
 
 public class Challenge30{
-    private static ArrayList<Card> cards;
     
     public static void main(String[] args) {
-        cards = new ArrayList<Card>();
+        ArrayList<Card> cards = new ArrayList<Card>();
         
         Color[] colors = Color.values();
         Rank[] ranks = Rank.values();
