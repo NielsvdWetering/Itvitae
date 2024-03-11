@@ -28,3 +28,4 @@ public class Challenge30{
         System.out.println();
     }
 }
+
