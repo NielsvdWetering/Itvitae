@@ -1,43 +1,52 @@
 package playerguide.narrative4.robot;
 
+interface RobotCommand {
+    void run(Robot robot);
+}
+
+
+/* challenge 39 code
+not used after converting to robotCommand interface in challenge 40
+
 abstract class RobotCommand {
     
     public void run(Robot robot) {
         //
     }
 }
+*/
 
-class OnCommand extends RobotCommand {
+class OnCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.setPowered(true);
     }
 }
 
-class OffCommand extends RobotCommand {
+class OffCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.setPowered(false);
     }
 }
 
-class NorthCommand extends RobotCommand {
+class NorthCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.moveY(1);
     }
 }
 
-class EastCommand extends RobotCommand {
+class EastCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.moveX(1);
     }
 }
 
-class SouthCommand extends RobotCommand {
+class SouthCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.moveY(-1);
     }
 }
 
-class WestCommand extends RobotCommand {
+class WestCommand implements RobotCommand {
     public void run(Robot robot) {
         robot.moveX(-1);
     }

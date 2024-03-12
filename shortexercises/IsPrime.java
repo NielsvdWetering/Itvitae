@@ -10,7 +10,7 @@ public class IsPrime {
 	}
     
     private static boolean isPrime(int number) {
-        boolean primeOrNot;
+        boolean primeOrNot = false;
 
         if (number == 2 || number == 3) {
             return true;
