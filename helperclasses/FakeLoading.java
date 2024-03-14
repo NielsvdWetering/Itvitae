@@ -1,5 +1,14 @@
 package helperclasses;
 
+/*
+    this fake loading bar class will get an error when the different input arrays do have different lengths,
+    I might fix this later.
+
+    the methode takes a loading text, delay in milliseconds between every 2 seconds, and text and background color ansi codes
+    only the loading text is mandatory, the other 2 paramaters are added/generated if not given
+    when the paramaters are given in an array, the methode will print the loading bars after each other.
+ */
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
