@@ -1,3 +1,5 @@
+package playerguide.narrative0;
+
 import java.util.Scanner;
 
 /*Changed the int variables to double in order to avoid the roundoff error when the base and height are both 1

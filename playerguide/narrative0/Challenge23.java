@@ -1,4 +1,4 @@
-package playerguide;
+package playerguide.narrative0;
 
 import java.util.Scanner;
 

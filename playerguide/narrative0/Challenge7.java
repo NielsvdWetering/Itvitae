@@ -1,4 +1,6 @@
-public class Challenge6 {
+package playerguide.narrative0;
+
+public class Challenge7 {
 	public static void main(String[] args) {
 		byte aByteNumber = 127;
 		short aShortNumber = 32767;
@@ -24,6 +26,24 @@ public class Challenge6 {
 		System.out.println("The boolean is a simple true or false type, an example of a boolean is: " + aBoolean);
 		System.out.println("\nThere is also a (not a primitive) type for text, called the String data type.");
 		System.out.println("an example of a String is: " + aString);
-	
+		
+		System.out.println("\nThere is also the possibility to change variables, thats why next the variables will be changes and printed in the same order:");
+		aByteNumber = 1;
+		aShortNumber = 2;
+		aIntNumber = 3;
+		aLongNumber = 4L;
+		aFloatNumber = 5F;
+		aDoubleNumber = 6;
+		aCharacter = 'y';
+		aBoolean = false;
+		
+		System.out.println(aByteNumber);
+		System.out.println(aShortNumber);
+		System.out.println(aIntNumber);
+		System.out.println(aLongNumber);
+		System.out.println(aFloatNumber);
+		System.out.println(aDoubleNumber);
+		System.out.println(aCharacter);
+		System.out.println(aBoolean);
 	}
 }

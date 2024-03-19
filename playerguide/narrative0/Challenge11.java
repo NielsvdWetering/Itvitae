@@ -1,3 +1,5 @@
+package playerguide.narrative0;
+
 import java.util.Scanner;
 import java.awt.Toolkit;
 

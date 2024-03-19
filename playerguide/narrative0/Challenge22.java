@@ -1,4 +1,6 @@
-package playerguide;
+package playerguide.narrative0;
+
+import playerguide.narrative0.HuntingTheManticore;
 
 public class Challenge22 {
     public static void main(String[] args) {

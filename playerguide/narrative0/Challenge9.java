@@ -1,3 +1,5 @@
+package playerguide.narrative0;
+
 import java.util.Scanner;
 
 public class Challenge9 {
