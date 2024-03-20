@@ -1,26 +1,26 @@
 package playerguide.narrative5.player;
 
 public class Player {
-    private int posRow;
-    private int posColumn;
-    private String[] playerCommands = {"move north", "move east", "move south", "move west"};
+    private int posX;
+    private int posY;
+    final private String[] PLAYER_COMMANDS = {"move north", "move east", "move south", "move west"};
 
     public Player(int[] entrancePosition) {
-        posRow = entrancePosition[0];
-        posColumn = entrancePosition[1];
+        posX = entrancePosition[0];
+        posY = entrancePosition[1];
 
     }
 
-    public void moveRow(int step) {
-        posRow += step;
+    public void moveX(int step) {
+        posX += step;
     }
 
-    public void moveColumn(int step) {
-        posColumn += step;
+    public void moveY(int step) {
+        posY += step;
     }
 
     public boolean checkIfPlayerCommand(String userInput) {
-        for (String command : playerCommands) {
+        for (String command : PLAYER_COMMANDS) {
             if (userInput.equalsIgnoreCase(command)) return true;
         }
         return false;
@@ -45,8 +45,15 @@ public class Player {
     }
 
     public int[] getLocation() {
-        return new int[] {posRow, posColumn};
+        return new int[] {posX, posY};
     }
 
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
 }

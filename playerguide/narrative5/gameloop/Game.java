@@ -15,15 +15,15 @@ public class Game {
     }
 
     public void run() {
-        tui.askAndRunUserActions();
-        tui.askAndRunUserActions();
-        tui.askAndRunUserActions();
-        tui.askAndRunUserActions();
-        int[] loc = player.getLocation();
-        System.out.println(loc[0] + " " + loc[1]);
-        //print
-        //ask input
-        //run input logica
+        while (!gameWorld.getFountainIsActivated() || !playerAtEntrance()) {
+            tui.printPlayerLocation();
+            tui.printRoomCondition();
+            tui.askAndRunUserActions();
+        }
+    }
+
+    private boolean playerAtEntrance() {
+        return (player.getPosX() == gameWorld.getEntrancePosition()[0] && player.getPosY() == gameWorld.getEntrancePosition()[1]);
     }
 
 }
