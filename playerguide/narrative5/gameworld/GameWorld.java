@@ -1,12 +1,13 @@
 package playerguide.narrative5.gameworld;
 
+import playerguide.narrative5.Commandable;
 import playerguide.narrative5.gameloop.GameTUI;
 
-public class GameWorld {
+public class GameWorld  implements Commandable {
     private int gridSize;
     private RoomType[][] gameGrid;
     private boolean fountainIsActivated;
-    final private String[] WORLD_COMMANDS = {"enable fountain", "disable fountain",};
+    final private String[] COMMANDS = {"enable fountain", "disable fountain",};
 
     
     public GameWorld() {
@@ -43,12 +44,14 @@ public class GameWorld {
         return new int[]{0,0};
     }
 
-    public boolean checkIfGameWorldCommand(String userInput) {
-        for (String command : WORLD_COMMANDS) {
-            if (userInput.equalsIgnoreCase(command)) return true;
-        }
-        return false;
+    public void runCommand(String command) {
+        //
     }
+
+    public String[] getCommands() {
+        return COMMANDS;
+    }
+
 
     public void runGameWorldCommand(String userInput) {
         switch (userInput.toLowerCase()) {

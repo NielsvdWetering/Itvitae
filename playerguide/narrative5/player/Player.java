@@ -1,14 +1,17 @@
 package playerguide.narrative5.player;
 
-public class Player {
+import playerguide.narrative5.Commandable;
+
+public class Player implements Commandable {
     private int posX;
     private int posY;
-    final private String[] PLAYER_COMMANDS = {"move north", "move east", "move south", "move west"};
+    final private int gameSize;
+    final private String[] COMMANDS = {"move north", "move east", "move south", "move west"};
 
-    public Player(int[] entrancePosition) {
+    public Player(int[] entrancePosition, int gameSize) {
         posX = entrancePosition[0];
         posY = entrancePosition[1];
-
+        this.gameSize = gameSize;
     }
 
     public void moveX(int step) {
@@ -19,35 +22,24 @@ public class Player {
         posY += step;
     }
 
-    public boolean checkIfPlayerCommand(String userInput) {
-        for (String command : PLAYER_COMMANDS) {
-            if (userInput.equalsIgnoreCase(command)) return true;
-        }
-        return false;
+    public void runCommand(String command) {
+        switch (command.toLowerCase()) {
+            case "move north" :
+                posY += 1;
+                break;
+            case "move south" :
+                posY -= 1;
+                break;
+            }
     }
 
-    public void runPlayerCommand(String userInput) {
-        run(setCommand(userInput));
-    }
-
-    private PlayerCommand setCommand(String userInput) {
-        switch (userInput.toLowerCase()) {
-            case "move north" : return new MoveNorthCommand();
-            case "move east" : return new MoveEastCommand();
-            case "move south" : return new MoveSouthCommand();
-            case "move west" : return new MoveWestCommand();
-        }
-        return new WrongInputCommand();
-    }
-
-    private void run(PlayerCommand command) {
-        command.runCommand(this);
+    public String[] getCommands() {
+        return COMMANDS;
     }
 
     public int[] getLocation() {
         return new int[] {posX, posY};
     }
-
 
     public int getPosX() {
         return posX;
