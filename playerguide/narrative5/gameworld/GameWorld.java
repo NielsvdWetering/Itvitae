@@ -45,19 +45,14 @@ public class GameWorld  implements Commandable {
     }
 
     public void runCommand(String command) {
-        //
+        switch (command.toLowerCase()) {
+            case "enable fountain" -> fountainIsActivated = true;
+            case "disable fountain" -> fountainIsActivated = false;
+        }
     }
 
     public String[] getCommands() {
         return COMMANDS;
-    }
-
-
-    public void runGameWorldCommand(String userInput) {
-        switch (userInput.toLowerCase()) {
-            case "enable fountain" -> fountainIsActivated = true;
-            case "disable fountain" -> fountainIsActivated = false;
-        }
     }
 
     public boolean getFountainIsActivated() {

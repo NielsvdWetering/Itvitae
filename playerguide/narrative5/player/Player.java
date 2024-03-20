@@ -24,17 +24,39 @@ public class Player implements Commandable {
 
     public void runCommand(String command) {
         switch (command.toLowerCase()) {
-            case "move north" :
-                posY += 1;
-                break;
-            case "move south" :
-                posY -= 1;
-                break;
+            case "move north" -> moveNorth();
+            case "move east" -> moveEast();
+            case "move south" -> moveSouth();
+            case "move west" -> moveWest();
             }
     }
 
     public String[] getCommands() {
         return COMMANDS;
+    }
+
+    private void moveNorth() {
+        if (posY < gameSize - 1) {
+            posY += 1;
+        }
+    }
+
+    private void moveEast() {
+        if (posX < gameSize - 1) {
+            posX += 1;
+        }
+    }
+
+    private void moveSouth() {
+        if (posY > 0) {
+            posY -= 1;
+        }
+    }
+
+    private void moveWest() {
+        if (posX > 0) {
+            posX -= 1;
+        }
     }
 
     public int[] getLocation() {
