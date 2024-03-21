@@ -26,14 +26,10 @@ public class Game {
     }
 
     private boolean playerAtEntrance() {
-        return (player.getPosX() == gameWorld.getEntrancePosition()[0] && player.getPosY() == gameWorld.getEntrancePosition()[1]);
+        return (playersCurrentRoomType().equals(RoomType.CAVERN_ENTRANCE));
     }
 
-    public RoomType getPlayersLocationRoomType() {
-        return gameWorld.getRoomAt(player.getLocation());
-    }
-
-    public RoomType getCurrentRoomType() {
+    private RoomType playersCurrentRoomType() {
         return gameWorld.getRoomAt(player.getLocation());
     }
 

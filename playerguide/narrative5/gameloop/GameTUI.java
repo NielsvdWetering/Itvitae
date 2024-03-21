@@ -19,9 +19,6 @@ public class GameTUI implements Commandable {
     public GameTUI(Player player, GameWorld gameWorld) {
         this.player = player;
         this.gameWorld = gameWorld;
-//        allCommands.addAll(Arrays.asList(COMMANDS));
-//        allCommands.addAll(Arrays.asList(playerCommands));
-//        allCommands.addAll(Arrays.asList(gameWorldCommands));
     }
 
     public void runCommand(String command) {
@@ -48,12 +45,15 @@ public class GameTUI implements Commandable {
         System.out.println(TextColor.YELLOW + "----------------------------------------");
         System.out.println("You can perform the following actions:");
 
-        ArrayList<String> allCurrentOptions = new ArrayList<>();
-        allCurrentOptions.addAll(getAllCurrentOptions(game.getPlayersLocationRoomType()));
-        for (String command : allCommands) {
+        ArrayList<String> allCurrentOptions = (getAllCurrentOptions(playersCurrentRoomType()));
+        for (String command : allCurrentOptions) {
             System.out.println("- " + command);
         }
         System.out.println("----------------------------------------" + TextColor.RESET);
+    }
+
+    private RoomType playersCurrentRoomType() {
+        return gameWorld.getRoomAt(player.getLocation());
     }
 
     private ArrayList<String> getAllCurrentOptions(RoomType playerCurrentRoomType) {
