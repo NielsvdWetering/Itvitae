@@ -3,6 +3,9 @@ package playerguide.narrative5.gameworld;
 import playerguide.narrative5.Commandable;
 import playerguide.narrative5.gameloop.GameTUI;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class GameWorld  implements Commandable {
     private int gridSize;
     private RoomType[][] gameGrid;
@@ -53,6 +56,14 @@ public class GameWorld  implements Commandable {
 
     public String[] getCommands() {
         return COMMANDS;
+    }
+
+    public ArrayList<String> getAvailableCommands(RoomType playerCurrentRoomType) {
+        ArrayList<String> availableCommands = new ArrayList<>();
+        if (playerCurrentRoomType == RoomType.FOUNTAIN) {
+            availableCommands.addAll(Arrays.asList(COMMANDS));
+        }
+        return availableCommands;
     }
 
     public boolean getFountainIsActivated() {

@@ -14,14 +14,6 @@ public class Player implements Commandable {
         this.gameSize = gameSize;
     }
 
-    public void moveX(int step) {
-        posX += step;
-    }
-
-    public void moveY(int step) {
-        posY += step;
-    }
-
     public void runCommand(String command) {
         switch (command.toLowerCase()) {
             case "move north" -> moveNorth();

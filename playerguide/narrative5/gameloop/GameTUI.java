@@ -3,7 +3,7 @@ package playerguide.narrative5.gameloop;
 import playerguide.narrative5.Commandable;
 import playerguide.narrative5.gameworld.GameWorld;
 import playerguide.narrative5.gameworld.RoomType;
-
+import playerguide.narrative5.player.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -12,12 +12,16 @@ import helperclasses.TextColor;
 public class GameTUI implements Commandable {
     final private String[] COMMANDS = {"help"};
     ArrayList<String> allCommands = new ArrayList<>();
+    Player player;
+    GameWorld gameWorld;
     Scanner sc = new Scanner(System.in);
 
-    public GameTUI(String[] playerCommands, String[] gameWorldCommands) {
-        allCommands.addAll(Arrays.asList(COMMANDS));
-        allCommands.addAll(Arrays.asList(playerCommands));
-        allCommands.addAll(Arrays.asList(gameWorldCommands));
+    public GameTUI(Player player, GameWorld gameWorld) {
+        this.player = player;
+        this.gameWorld = gameWorld;
+//        allCommands.addAll(Arrays.asList(COMMANDS));
+//        allCommands.addAll(Arrays.asList(playerCommands));
+//        allCommands.addAll(Arrays.asList(gameWorldCommands));
     }
 
     public void runCommand(String command) {
@@ -43,10 +47,23 @@ public class GameTUI implements Commandable {
     private void printHelpMenu() {
         System.out.println(TextColor.YELLOW + "----------------------------------------");
         System.out.println("You can perform the following actions:");
+
+        ArrayList<String> allCurrentOptions = new ArrayList<>();
+        allCurrentOptions.addAll(getAllCurrentOptions(game.getPlayersLocationRoomType()));
         for (String command : allCommands) {
             System.out.println("- " + command);
         }
         System.out.println("----------------------------------------" + TextColor.RESET);
+    }
+
+    private ArrayList<String> getAllCurrentOptions(RoomType playerCurrentRoomType) {
+        ArrayList<String> allCurrentOptions = new ArrayList<>();
+
+        allCurrentOptions.addAll(Arrays.asList(COMMANDS));
+        allCurrentOptions.addAll(Arrays.asList(player.getCommands()));
+        allCurrentOptions.addAll(gameWorld.getAvailableCommands(playerCurrentRoomType));
+
+        return allCurrentOptions;
     }
 
 

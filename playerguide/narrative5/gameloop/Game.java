@@ -14,7 +14,7 @@ public class Game {
     public Game() {
         gameWorld = new GameWorld();
         player = new Player(gameWorld.getEntrancePosition(), GameTUI.askForGameSize());
-        tui = new GameTUI(player.getCommands(), gameWorld.getCommands());
+        tui = new GameTUI(player, gameWorld);
     }
 
     public void run() {
@@ -29,24 +29,28 @@ public class Game {
         return (player.getPosX() == gameWorld.getEntrancePosition()[0] && player.getPosY() == gameWorld.getEntrancePosition()[1]);
     }
 
-    private RoomType getCurrentRoomType() {
+    public RoomType getPlayersLocationRoomType() {
+        return gameWorld.getRoomAt(player.getLocation());
+    }
+
+    public RoomType getCurrentRoomType() {
         return gameWorld.getRoomAt(player.getLocation());
     }
 
     private void askUserForAction() {
         String userInput = tui.getUserInput("What do you want to do? ");
 
-        Commandable obj = null;
+        Commandable commandableObj = null;
         do {
             try {
-                obj = whatKindOfCommand(userInput);
+                commandableObj = whatKindOfCommand(userInput);
             } catch (NoValidCommandExeption e) {
                 System.out.println("That is not a valid command, type help to see all the options.");
                 userInput = tui.getUserInput("");
             }
-        } while (obj == null);
+        } while (commandableObj == null);
 
-        runUserCommand(userInput, obj);
+        runUserCommand(userInput, commandableObj);
     }
 
 
