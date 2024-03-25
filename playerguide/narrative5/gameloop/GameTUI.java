@@ -39,14 +39,14 @@ public class GameTUI implements Commandable {
                 You can type help at any time to get a list of all available options.""" + TextColor.RESET);
     }
 
-    public static int askForGameSize() {
+    public static GameSize askForGameSize() {
         System.out.println(TextColor.MAGENTA + """
                 
                 How big do you want the game to be?
                 Type the option you want:
-                - 'small' for a 4x4 grid
-                - 'medium' for a 6x6 grid
-                - 'large' for a 8x8 grid""" + TextColor.RESET);
+                - 'small' for a 4x4 grid (1 pitt)
+                - 'medium' for a 6x6 grid (2 pitts)
+                - 'large' for a 8x8 grid (3 pitts)""" + TextColor.RESET);
 
         String userInput;
         do {
@@ -54,10 +54,10 @@ public class GameTUI implements Commandable {
         } while (!userInput.equalsIgnoreCase("small") && !userInput.equalsIgnoreCase("medium") && !userInput.equalsIgnoreCase("large"));
 
         return switch (userInput) {
-            case "small" -> 4;
-            case "medium" -> 6;
-            case "large" -> 8;
-            default -> 4;
+            case "small" -> GameSize.SMALL;
+            case "medium" -> GameSize.MEDIUM;
+            case "large" -> GameSize.LARGE;
+            default -> throw new IllegalArgumentException();
         };
     }
 
@@ -115,7 +115,7 @@ public class GameTUI implements Commandable {
         };
         System.out.println(text + TextColor.RESET);
 
-        if (gameWorld.pittInNearbyRoom(player.getLocation())) {System.out.println(TextColor.BLUE + "There is a pit nearby");}
+        if (gameWorld.pittInNearbyRoom(player.getLocation())) {System.out.println(TextColor.BLUE + "There is a pit nearby" + TextColor.RESET);}
     }
 
     public void fellIntoAPitt() {
@@ -131,6 +131,10 @@ public class GameTUI implements Commandable {
                 Congratulations!! You successfully reactivated the fountain and came back alive!
                 Now there will be a big feast in the village in your honor!
                 And there will be cake!""");
+    }
+
+    public static void bumbedIntoWall() {
+        System.out.println("*You bumbed into a wall*\nIt appears that the cavern does not go further into this direction.");
     }
 
 }

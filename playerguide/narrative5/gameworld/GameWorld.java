@@ -13,14 +13,14 @@ public class GameWorld  implements Commandable {
     final private String[] COMMANDS = {"enable fountain", "disable fountain",};
 
     
-    public GameWorld(int gridSize) {
+    public GameWorld(int gridSize, int numberOfPitts) {
         this.gridSize = gridSize;
         gameGrid = new RoomType[gridSize][gridSize];
         fountainIsActivated = false;
         fillRoomsWithEmpty();
         placeCavernEntrance();
         placeRoomAtRandomPlace(RoomType.FOUNTAIN);
-        placeRoomAtRandomPlace(RoomType.PITT, 2); //make amount variable to gameSize
+        placeRoomAtRandomPlace(RoomType.PITT, numberOfPitts);
 
     }
 
@@ -100,7 +100,4 @@ public class GameWorld  implements Commandable {
         return false;
     }
 
-    public int getGameSize() {
-        return gridSize;
-    }
 }

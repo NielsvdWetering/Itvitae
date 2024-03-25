@@ -10,11 +10,13 @@ public class Game {
     GameTUI tui;
     GameWorld gameWorld;
     Player player;
+    GameSize gameSize;
 
     public Game() {
         GameTUI.printGameExplanation();
-        gameWorld = new GameWorld(GameTUI.askForGameSize());
-        player = new Player(gameWorld.getEntrancePosition(), gameWorld.getGameSize());
+        gameSize = GameTUI.askForGameSize();
+        gameWorld = new GameWorld(gameSize.getGridSize(), gameSize.getNumberOfPitts());
+        player = new Player(gameWorld.getEntrancePosition(), gameSize.getGridSize());
         tui = new GameTUI(player, gameWorld);
     }
 
