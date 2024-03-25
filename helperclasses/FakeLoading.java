@@ -4,7 +4,7 @@ package helperclasses;
     this fake loading bar class will get an error when the different input arrays do have different lengths,
     I might fix this later.
 
-    the methode takes a loading text, delay in milliseconds between every 2 seconds, and text and background color ansi codes
+    the methode takes a loading text, delay in milliseconds between every 2 percent, and text and background color ansi codes
     only the loading text is mandatory, the other 2 paramaters are added/generated if not given
     when the paramaters are given in an array, the methode will print the loading bars after each other.
  */
@@ -59,6 +59,16 @@ public class FakeLoading {
         for (int i = 0; i < loadingTextArray.length; i++) {
             fakeLoading(loadingTextArray[i], randomTime(), textAndBackgroundColor[i]);
         }
+    }
+
+    public static void fakeLoading(String[] loadingTextArray, String textAndBackgroundColor) {
+        String[] textColor = new String[loadingTextArray.length];
+
+        for (int i = 0; i < loadingTextArray.length; i++) {
+            textColor[i] = textAndBackgroundColor;
+        }
+
+        fakeLoading(loadingTextArray, textColor);
     }
 
     private static int randomTime() {

@@ -12,16 +12,23 @@ public class Game {
     Player player;
 
     public Game() {
-        gameWorld = new GameWorld();
-        player = new Player(gameWorld.getEntrancePosition(), GameTUI.askForGameSize());
+        GameTUI.printGameExplanation();
+        gameWorld = new GameWorld(GameTUI.askForGameSize());
+        player = new Player(gameWorld.getEntrancePosition(), gameWorld.getGameSize());
         tui = new GameTUI(player, gameWorld);
     }
 
     public void run() {
-        while (!gameWorld.getFountainIsActivated() || !playerAtEntrance()) {
+        while (!playersCurrentRoomType().equals(RoomType.PITT) && (!gameWorld.getFountainIsActivated() || !playerAtEntrance())) {
             tui.printPlayerLocation(player.getLocation());
             tui.printRoomCondition(gameWorld.getRoomAt(player.getLocation()), gameWorld.getFountainIsActivated());
             askUserForAction();
+        }
+
+        if (playersCurrentRoomType().equals(RoomType.PITT)) {
+            tui.fellIntoAPitt();
+        } else {
+            tui.wonGame();
         }
     }
 
@@ -49,23 +56,18 @@ public class Game {
         runUserCommand(userInput, commandableObj);
     }
 
-
-    /*
-        how can i avoid having to declare a random kind of command
-        trow an exeption?
-     */
     private Commandable whatKindOfCommand(String userCommand) throws NoValidCommandExeption {
-        for (String command : tui.getCommands()) {
+        for (String command : tui.getAllCommands()) {
             if (command.equalsIgnoreCase(userCommand)) {
                 return tui;
             }
         }
-        for (String command : player.getCommands()) {
+        for (String command : player.getAllCommands()) {
             if (command.equalsIgnoreCase(userCommand)) {
                 return player;
             }
         }
-        for (String command : gameWorld.getCommands()) {
+        for (String command : gameWorld.getAvailableCommands(playersCurrentRoomType())) {
             if (command.equalsIgnoreCase(userCommand)) {
                 return gameWorld;
             }

@@ -23,7 +23,7 @@ public class Player implements Commandable {
             }
     }
 
-    public String[] getCommands() {
+    public String[] getAllCommands() {
         return COMMANDS;
     }
 
@@ -55,11 +55,5 @@ public class Player implements Commandable {
         return new int[] {posX, posY};
     }
 
-    public int getPosX() {
-        return posX;
-    }
 
-    public int getPosY() {
-        return posY;
-    }
 }

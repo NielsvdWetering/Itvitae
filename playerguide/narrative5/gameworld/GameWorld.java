@@ -1,25 +1,26 @@
 package playerguide.narrative5.gameworld;
 
 import playerguide.narrative5.Commandable;
-import playerguide.narrative5.gameloop.GameTUI;
-
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameWorld  implements Commandable {
-    private int gridSize;
-    private RoomType[][] gameGrid;
+    Random rand = new Random();
+    private final int gridSize;
+    private final RoomType[][] gameGrid;
     private boolean fountainIsActivated;
     final private String[] COMMANDS = {"enable fountain", "disable fountain",};
 
     
-    public GameWorld() {
-        gridSize = GameTUI.askForGameSize();
+    public GameWorld(int gridSize) {
+        this.gridSize = gridSize;
         gameGrid = new RoomType[gridSize][gridSize];
         fountainIsActivated = false;
         fillRoomsWithEmpty();
         placeCavernEntrance();
-        placeFountain();
+        placeRoomAtRandomPlace(RoomType.FOUNTAIN);
+        placeRoomAtRandomPlace(RoomType.PITT, 2); //make amount variable to gameSize
 
     }
 
@@ -35,12 +36,23 @@ public class GameWorld  implements Commandable {
         gameGrid[0][0] = RoomType.CAVERN_ENTRANCE;
     }
 
-    private void placeFountain() {
-        gameGrid[0][2] = RoomType.FOUNTAIN;
+    private void placeRoomAtRandomPlace(RoomType roomType) {
+        boolean roomPlaced = false;
+        while (!roomPlaced) {
+            int x = rand.nextInt(gridSize);
+            int y = rand.nextInt(gridSize);
+
+            if (gameGrid[x][y].equals(RoomType.EMPTY)) {
+                gameGrid[x][y] = roomType;
+                roomPlaced = true;
+            }
+        }
     }
 
-    private void placePitts() {
-        //place pitts
+    private void placeRoomAtRandomPlace(RoomType roomtype, int amountOfRooms) {
+        for (int i = 0; i < amountOfRooms; i++) {
+            placeRoomAtRandomPlace(roomtype);
+        }
     }
 
     public int[] getEntrancePosition() {
@@ -54,7 +66,7 @@ public class GameWorld  implements Commandable {
         }
     }
 
-    public String[] getCommands() {
+    public String[] getAllCommands() {
         return COMMANDS;
     }
 
@@ -72,5 +84,23 @@ public class GameWorld  implements Commandable {
 
     public RoomType getRoomAt(int[] gridLocationXY) {
         return gameGrid[gridLocationXY[0]][gridLocationXY[1]];
+    }
+
+    public boolean pittInNearbyRoom(int[] playerLocation) {
+
+        for (int xLocation = playerLocation[0]-1; xLocation <= playerLocation[0]+1; xLocation++) {
+            if (xLocation >= 0 && xLocation < gridSize) {
+                for (int yLocation = playerLocation[1] - 1; yLocation <= playerLocation[1] + 1; yLocation++) {
+                    if (yLocation >= 0 && yLocation < gridSize) {
+                        if (gameGrid[xLocation][yLocation].equals(RoomType.PITT)) return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public int getGameSize() {
+        return gridSize;
     }
 }
