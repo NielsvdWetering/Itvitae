@@ -32,7 +32,7 @@ public class Player implements Commandable {
         if (posY < gridSize - 1) {
             posY += 1;
         } else {
-            GameTUI.bumbedIntoWall();
+            GameTUI.bumpedIntoWall();
         }
     }
 
@@ -40,7 +40,7 @@ public class Player implements Commandable {
         if (posX < gridSize - 1) {
             posX += 1;
         } else {
-            GameTUI.bumbedIntoWall();
+            GameTUI.bumpedIntoWall();
         }
     }
 
@@ -48,7 +48,7 @@ public class Player implements Commandable {
         if (posY > 0) {
             posY -= 1;
         } else {
-            GameTUI.bumbedIntoWall();
+            GameTUI.bumpedIntoWall();
         }
     }
 
@@ -56,7 +56,7 @@ public class Player implements Commandable {
         if (posX > 0) {
             posX -= 1;
         } else {
-            GameTUI.bumbedIntoWall();
+            GameTUI.bumpedIntoWall();
         }
     }
 

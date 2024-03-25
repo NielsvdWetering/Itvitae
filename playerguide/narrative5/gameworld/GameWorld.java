@@ -32,7 +32,7 @@ public class GameWorld  implements Commandable {
         }
     }
 
-    public void placeCavernEntrance() {
+    private void placeCavernEntrance() {
         gameGrid[0][0] = RoomType.CAVERN_ENTRANCE;
     }
 

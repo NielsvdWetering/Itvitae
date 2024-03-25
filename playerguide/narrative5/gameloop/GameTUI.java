@@ -133,7 +133,7 @@ public class GameTUI implements Commandable {
                 And there will be cake!""");
     }
 
-    public static void bumbedIntoWall() {
+    public static void bumpedIntoWall() {
         System.out.println("*You bumbed into a wall*\nIt appears that the cavern does not go further into this direction.");
     }
 
