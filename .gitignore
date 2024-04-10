@@ -26,3 +26,6 @@ replay_pid*
 #inteliJ files
 *.xml
 *.iml
+
+#java test class
+playerguide/Test.java
